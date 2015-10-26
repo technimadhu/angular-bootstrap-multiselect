@@ -29,7 +29,9 @@
                 disabled: '=?ngDisabled'
             },
             require: 'ngModel',
-            templateUrl: 'multiselect.html',
+            templateUrl: function(element, attr) {
+              return attr.templateUrl ? attr.templateUrl : 'multiselect.html';
+            },
             link: function ($scope, $element, $attrs, $ngModelCtrl) {
                 $scope.selectionLimit = $scope.selectionLimit || 0;
                 $scope.searchLimit = $scope.searchLimit || 25;
